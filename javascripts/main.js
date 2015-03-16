@@ -58,7 +58,7 @@ app.controller('rightCtrl', ['$scope', 'panels', function ($scope, panels) {
 //top panel controller
 app.controller('topCtrl', ['$scope', 'panels', function ($scope, panels) {
 
-	$scope.$on('helloTop', function(event, args) {
+	$scope.$on('topHello', function(event, args) {
 
 		$scope.message = args.message;
 
