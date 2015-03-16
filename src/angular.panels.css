@@ -1,0 +1,93 @@
+/*
+	@license Angular Panels version 1.0.0
+	ⓒ 2015 AHN JAE-HA http://github.com/eu81273
+	License: MIT
+
+*/
+.dim-layer {
+	display:none;
+}
+
+.dim-layer.open {
+	background:#000;
+	bottom:0;
+	display:block;
+	left:0;
+	opacity:0.8;
+	position:fixed;
+	right:0;
+	top:0;
+	z-index:198;
+}
+
+.overflow-hidden {
+	overflow:hidden;
+}
+
+.panels {
+	-moz-box-shadow:none;
+	-webkit-box-shadow:none;
+	box-shadow:none;
+	background:#FFF;
+	display:block;
+	overflow-x:auto;
+	overflow-y:auto;
+	pointer-events:all;
+	position:fixed;
+	transition:.2s ease-in-out;
+	z-index:199;
+}
+
+.panels.panel-bottom {
+	bottom:-500px;
+	height:500px;
+	width:100%;
+}
+
+.panels.panel-bottom.open {
+	-moz-box-shadow:20px 0 50px 0 rgba(0,0,0,0.6);
+	-webkit-box-shadow:20px 0 50px 0 rgba(0,0,0,0.6);
+	bottom:0;
+	box-shadow:20px 0 50px 0 rgba(0,0,0,0.6);
+}
+
+.panels.panel-left {
+	height:100%;
+	left:-800px;
+	top:0;
+	width:800px;
+}
+
+.panels.panel-left.open {
+	-moz-box-shadow:20px 0 50px 0 rgba(0,0,0,0.6);
+	-webkit-box-shadow:20px 0 50px 0 rgba(0,0,0,0.6);
+	box-shadow:20px 0 50px 0 rgba(0,0,0,0.6);
+	left:0;
+}
+
+.panels.panel-right {
+	height:100%;
+	right:-800px;
+	top:0;
+	width:800px;
+}
+
+.panels.panel-right.open {
+	-moz-box-shadow:20px 0 50px 0 rgba(0,0,0,0.6);
+	-webkit-box-shadow:20px 0 50px 0 rgba(0,0,0,0.6);
+	box-shadow:20px 0 50px 0 rgba(0,0,0,0.6);
+	right:0;
+}
+
+.panels.panel-top {
+	height:70px;
+	top:-70px;
+	width:100%;
+}
+
+.panels.panel-top.open {
+	-moz-box-shadow:20px 0 50px 0 rgba(0,0,0,0.6);
+	-webkit-box-shadow:20px 0 50px 0 rgba(0,0,0,0.6);
+	box-shadow:20px 0 50px 0 rgba(0,0,0,0.6);
+	top:0;
+}
