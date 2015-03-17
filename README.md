@@ -40,19 +40,19 @@ And add panels container tag to your application.
 some attributes of angular panels are below.
 
 - panels: panels directive.
-- panel-left-template : panel's template of left side.
-- panel-left-controller : panel's controller of left side.
-- panel-top-template : panel's template of top side.
-- panel-top-controller : panel's controller of top side.
-- panel-right-template : panel's template of right side.
-- panel-right-controller : panel's controller of right side.
-- panel-bottom-template : panel's template of bottom side.
-- panel-bottom-controller : panel's controller of bottom side.
+- panel-left-template : template path of left side.
+- panel-left-controller : controller of left side.
+- panel-top-template : template path of top side.
+- panel-top-controller : controller of top side.
+- panel-right-template : template path of right side.
+- panel-right-controller : controller of right side.
+- panel-bottom-template : template path of bottom side.
+- panel-bottom-controller : controller of bottom side.
 
 
 ## Open panel
 
-Creating snackbar also very simple. Inject snackbar service to your app then call the service method like below.
+Opening panel also very simple. Inject panels service to your app then call the service method like below.
 
 
 ```javascript
