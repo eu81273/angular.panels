@@ -1,7 +1,7 @@
 Angular Panels
 ================
 
-Pure [AngularJS](http://www.angularjs.org) based Side Panels.
+Pure [AngularJS](http://www.angularjs.org) based lightweight(1.7KB) Side Panels. 
 [![ScreenShot](https://rawgit.com/eu81273/angular.panels/gh-pages/images/preview.png)](http://eu81273.github.io/angular.panels/)
 
 
