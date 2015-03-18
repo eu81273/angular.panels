@@ -78,7 +78,7 @@ app.controller('leftCtrl', function($scope) {
 
 ## Browser Compatibility
 
-Report me please. I just tested on Chrome 41.
+IE9+, Chrome, Safari
 
 ## Changelogs
 
