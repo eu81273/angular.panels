@@ -25,6 +25,14 @@
 }
 
 .panels {
+	-ms-scrollbar-face-color: #EEE; 
+	-ms-scrollbar-highlight-color: #555;
+	-ms-scrollbar-shadow-color: #EEE; 
+	-ms-scrollbar-3dlight-color: #EEE;
+	-ms-scrollbar-arrow-color: #EEE; 
+	-ms-scrollbar-track-color: #FFF;
+	-ms-scrollbar-darkshadow-color: #EEE;
+	
 	-moz-box-shadow:none;
 	-webkit-box-shadow:none;
 	box-shadow:none;
@@ -37,6 +45,23 @@
 	transition:.2s ease-in-out;
 	z-index:199;
 }
+
+.panels::-webkit-scrollbar {
+	width:5px;
+}
+
+.panels::-webkit-scrollbar-thumb {
+	background-color:rgba(0,0,0,0.3);
+}
+
+.panels::-webkit-scrollbar-thumb:hover {
+	background-color:rgba(0,0,0,0.5);
+}
+
+.panels::-webkit-scrollbar-track {
+	background-color:transparent;
+}
+
 
 .panels.panel-bottom {
 	bottom:-500px;
@@ -53,9 +78,9 @@
 
 .panels.panel-left {
 	height:100%;
-	left:-800px;
+	left:-700px;
 	top:0;
-	width:800px;
+	width:700px;
 }
 
 .panels.panel-left.open {
@@ -67,9 +92,9 @@
 
 .panels.panel-right {
 	height:100%;
-	right:-800px;
+	right:-700px;
 	top:0;
-	width:800px;
+	width:700px;
 }
 
 .panels.panel-right.open {
