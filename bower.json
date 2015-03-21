@@ -4,13 +4,13 @@
   "description": "Pure AngularJS based SidePanels (no jQuery)",
   "main": [
     "./dist/angular.panels.min.js",
-    "./dist/angular.panels.min.css"
+    "./dist/angular.panels.min.css",
   ],
   "authors": [
-    "AHN JAE-HA <eu81273@gmail.com>"
+    "AHN JAE-HA"
   ],
   "license": "MIT",
-  "homepage": "http://eu81273.github.io/angular.panels/",
+  "homepage": "eu81273.github.io/angular.panels/",
   "ignore": [
     "node_modules",
     "gulpfile.js",
