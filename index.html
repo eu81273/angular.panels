@@ -10,7 +10,6 @@
 	<link href="stylesheets/main.css" rel="stylesheet" type="text/css">
 
 	<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.14/angular.min.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.js"></script>
 	<script src="//rawgit.com/eu81273/angular.panels/master/dist/angular.panels.min.js"></script>
 	<script src="javascripts/prism.min.js"></script>
 	<script src="javascripts/main.js"></script>
@@ -34,7 +33,7 @@
 		</div>
 	</nav>
 
-	<div class="container-fluid title-section">
+	<section class="title-section container-fluid">
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-12 col-xs-12 text-center">
@@ -43,24 +42,24 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</section>
 
-	<div class="container-fluid content-section" id="quickstart" name="quickstart">
+	<section class="content-section container-fluid" id="quickstart">
 		<div class="container">
 			<div class="row">
 				<h2><i class="fa fa-bolt"></i> Quic start</h2>
 
 				<p>Copy the script and css into your project and add a script and link tag to your page.</p>
-				<pre><code class="language-markup">&lt;script type=&quot;text/javascript&quot; src=&quot;angular.panels.js&quot;&gt;&lt;/script&gt;
+				<pre><code data-ng-non-bindable class="language-markup">&lt;script type=&quot;text/javascript&quot; src=&quot;angular.panels.js&quot;&gt;&lt;/script&gt;
 &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;angular.panels.css&quot;&gt;</code></pre>
 
 				<br/><br/>
 				<p>Add a dependency to your application module.</p>
-				<pre><code class="language-javascript">var app = angular.module('myApp', ['angular.panels']);</code></pre>
+				<pre><code data-ng-non-bindable class="language-javascript">var app = angular.module('myApp', ['angular.panels']);</code></pre>
 
 				<br/><br/>
 				<p>And add panels container tag to your application.</p>
-				<pre><code class="language-markup">&lt;div
+				<pre><code data-ng-non-bindable class="language-markup">&lt;div
     data-panels=&quot;true&quot;
     data-panel-left-template=&quot;../resources/template/left.html&quot;
     data-panel-left-controller=&quot;leftCtrl&quot; &gt;
@@ -68,21 +67,21 @@
 
 				<br/><br/>
 				<p>additional attributes of angular panels are below.</p>
-				<blockquote>
-					<p>panels: panels directive.</p>
-					<p>panel-left-template : template path of left side.</p>
-					<p>panel-left-controller : controller of left side.</p>
-					<p>panel-top-template : template path of top side.</p>
-					<p>panel-top-controller : controller of top side.</p>
-					<p>panel-right-template : template path of right side.</p>
-					<p>panel-right-controller : controller of right side.</p>
-					<p>panel-bottom-template : template path of bottom side.</p>
-					<p>panel-bottom-controller : controller of bottom side.</p></p>				
-				</blockquote>
+				<dl class="">
+					<dt><label class="label label-default">panels</label></dt><dd>panels directive.</dd>
+					<dt><label class="label label-default">panel-left-template</label></dt><dd>template path of left side.</dd>
+					<dt><label class="label label-default">panel-left-controller</label></dt><dd>controller of left side.</dd>
+					<dt><label class="label label-default">panel-top-template</label></dt><dd>template path of top side.</dd>
+					<dt><label class="label label-default">panel-top-controller</label></dt><dd>controller of top side.</dd>
+					<dt><label class="label label-default">panel-right-template</label></dt><dd>template path of right side.</dd>
+					<dt><label class="label label-default">panel-right-controller</label></dt><dd>controller of right side.</dd>
+					<dt><label class="label label-default">panel-bottom-template</label></dt><dd>template path of bottom side.</dd>
+					<dt><label class="label label-default">panel-bottom-controller</label></dt><dd>controller of bottom side.</dd></p>
+				</dl>
 
 				<br/><br/>
 				<p>To open the panel, inject panels service to your app then call the service method like below.</p>
-				<pre><code class="language-javascript">var app = angular.module('angularApplication', ['angular.panels']);
+				<pre><code data-ng-non-bindable class="language-javascript">var app = angular.module('angularApplication', ['angular.panels']);
 
 app.controller('defaultController', function($scope, panels) {
 
@@ -106,11 +105,11 @@ app.controller('leftCtrl', function($scope) {
 
 			</div>
 		</div>
-	</div>
+	</section>
 
 
 
-	<div class="container-fluid content-section" id="example" name="example">
+	<section class="content-section container-fluid" id="example">
 		<div class="container">
 			<div class="row">
 				<h2><i class="fa fa-play-circle"></i> Example</h2>
@@ -129,8 +128,8 @@ app.controller('leftCtrl', function($scope) {
 				</div>
 
 				<br /><br />
-				<p>and this is example source.</p>
-				<pre><code class="language-markup">&lt;!DOCTYPE html&gt;
+				<p>index.html</p>
+				<pre><code data-ng-non-bindable class="language-markup">&lt;!DOCTYPE html&gt;
 
 &lt;html data-ng-app=&quot;angularApplication&quot;&gt;
 &lt;head lang=&quot;ko&quot;&gt;
@@ -269,12 +268,26 @@ app.controller('leftCtrl', function($scope) {
 &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
+
+				<br />
+				<p>left.html</p>
+				<pre><code data-ng-non-bindable class="language-markup">&lt;div class=&quot;pane-head&quot;&gt;
+	&lt;button type=&quot;button&quot; class=&quot;close&quot; data-ng-click=&quot;closePane();&quot;&gt;&times;&lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;pane-body&quot;&gt;
+	&lt;div class=&quot;row&quot;&gt;
+		&lt;h3&gt;Left Panel&lt;/h3&gt;
+	&lt;/div&gt;
+	&lt;div class=&quot;row&quot;&gt;{{message}}&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
 			</div>
 		</div>
-	</div>
+	</section>
 
 
-	<div class="container-fluid content-section" id="compatibility" name="compatibility">
+	<section class="content-section container-fluid" id="compatibility">
 		<div class="container">
 			<div class="row">
 				<h2><i class="fa fa-cog"></i> Compatibility</h2>
@@ -282,10 +295,10 @@ app.controller('leftCtrl', function($scope) {
 				<p>IE9+, Chrome, Safari.</p>
 			</div>
 		</div>
-	</div>
+	</section>
 
 
-	<div class="container-fluid content-section">
+	<section class="content-section container-fluid">
 		<div class="container">
 
 			<div class="row">
@@ -310,7 +323,7 @@ app.controller('leftCtrl', function($scope) {
 				</div>
 			</div>
 		</div>
-	</div>
+	</section>
 
 
 	<div
