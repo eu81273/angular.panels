@@ -6,10 +6,13 @@
 	<link href="//cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.2/sandstone/bootstrap.min.css" rel="stylesheet" type="text/css">
 	<link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 	<link href="//rawgit.com/eu81273/angular.panels/master/dist/angular.panels.min.css" rel="stylesheet" type="text/css">
+	<link href="stylesheets/prism.min.css" rel="stylesheet" type="text/css">
 	<link href="stylesheets/main.css" rel="stylesheet" type="text/css">
 
 	<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.14/angular.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.js"></script>
 	<script src="//rawgit.com/eu81273/angular.panels/master/dist/angular.panels.min.js"></script>
+	<script src="javascripts/prism.min.js"></script>
 	<script src="javascripts/main.js"></script>
 
 	<title>Angular.panels by eu81273</title>
@@ -17,40 +20,298 @@
 
 <body data-ng-controller="defaultController">
 
-	<div class="container">
-		<nav class="navbar navbar-inverse">
-			<div class="container-fluid">
-				<div class="navbar-header">
-					<a class="navbar-brand" href="https://github.com/eu81273/angular.panels">angular.panels</a>
+	<nav class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="" data-ng-click="leftOpen()"><i class="fa fa-bars"></i> Emotional Programming</a>
+			</div>
+
+			<ul class="nav navbar-nav navbar-right hidden-xs">
+				<li><a href="#quickstart"><i class="fa fa-bolt"></i> Quic start</a></li>
+				<li><a href="#example"><i class="fa fa-play-circle"></i> Example</a></li>
+				<li><a href="#compatibility"><i class="fa fa-cog"></i> Compatibility</a></li>
+			</ul>
+		</div>
+	</nav>
+
+	<div class="container-fluid title-section">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12 col-xs-12 text-center">
+					<h1>angular.panels</h1>
+					<p>Pure AngularJS based Side Panels.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="container-fluid content-section" id="quickstart" name="quickstart">
+		<div class="container">
+			<div class="row">
+				<h2><i class="fa fa-bolt"></i> Quic start</h2>
+
+				<p>Copy the script and css into your project and add a script and link tag to your page.</p>
+				<pre><code class="language-markup">&lt;script type=&quot;text/javascript&quot; src=&quot;angular.panels.js&quot;&gt;&lt;/script&gt;
+&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;angular.panels.css&quot;&gt;</code></pre>
+
+				<br/><br/>
+				<p>Add a dependency to your application module.</p>
+				<pre><code class="language-javascript">var app = angular.module('myApp', ['angular.panels']);</code></pre>
+
+				<br/><br/>
+				<p>And add panels container tag to your application.</p>
+				<pre><code class="language-markup">&lt;div
+    data-panels=&quot;true&quot;
+    data-panel-left-template=&quot;../resources/template/left.html&quot;
+    data-panel-left-controller=&quot;leftCtrl&quot; &gt;
+&lt;/div&gt;</code></pre>
+
+				<br/><br/>
+				<p>additional attributes of angular panels are below.</p>
+				<blockquote>
+					<p>panels: panels directive.</p>
+					<p>panel-left-template : template path of left side.</p>
+					<p>panel-left-controller : controller of left side.</p>
+					<p>panel-top-template : template path of top side.</p>
+					<p>panel-top-controller : controller of top side.</p>
+					<p>panel-right-template : template path of right side.</p>
+					<p>panel-right-controller : controller of right side.</p>
+					<p>panel-bottom-template : template path of bottom side.</p>
+					<p>panel-bottom-controller : controller of bottom side.</p></p>				
+				</blockquote>
+
+				<br/><br/>
+				<p>To open the panel, inject panels service to your app then call the service method like below.</p>
+				<pre><code class="language-javascript">var app = angular.module('angularApplication', ['angular.panels']);
+
+app.controller('defaultController', function($scope, panels) {
+
+    //open left panel
+    panels.open(&quot;left&quot;);
+
+    //close panel
+    //panels.close();
+
+});
+
+
+app.controller('leftCtrl', function($scope) {
+
+    //left panel controller
+
+});</code></pre>
+
+				<br/><br/>
+				<p>It's <strong>all</strong>.</p>
+
+			</div>
+		</div>
+	</div>
+
+
+
+	<div class="container-fluid content-section" id="example" name="example">
+		<div class="container">
+			<div class="row">
+				<h2><i class="fa fa-play-circle"></i> Example</h2>
+
+				<p>Type any message you want to show on the panel in the input box below, and press the button "LEFT OPEN".</p>
+
+				<div class="form-group">
+					<input class="form-control input-lg" type="text" data-ng-model="message" placeholder="Message for panels..">
 				</div>
 
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#">About</a></li>
-				</ul>
+				<div class="btn-group btn-group-justified">
+					<a href="" data-ng-click="leftOpen()" class="btn btn-default">Left Open</a>
+					<a href="" data-ng-click="rightOpen()" class="btn btn-default">Right Open</a>
+					<a href="" data-ng-click="topOpen()" class="btn btn-default">Top Open</a>
+					<a href="" data-ng-click="bottomOpen()" class="btn btn-default">Bottom Open</a>
+				</div>
+
+				<br /><br />
+				<p>and this is example source.</p>
+				<pre><code class="language-markup">&lt;!DOCTYPE html&gt;
+
+&lt;html data-ng-app=&quot;angularApplication&quot;&gt;
+&lt;head lang=&quot;ko&quot;&gt;
+	&lt;meta charset=&quot;utf-8&quot;&gt;
+	&lt;link href=&quot;//rawgit.com/eu81273/angular.panels/master/dist/angular.panels.min.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+
+	&lt;script src=&quot;//cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.14/angular.min.js&quot;&gt;&lt;/script&gt;
+	&lt;script src=&quot;//rawgit.com/eu81273/angular.panels/master/dist/angular.panels.min.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body data-ng-controller=&quot;defaultController&quot;&gt;
+
+	&lt;div class=&quot;container-fluid content-section&quot;&gt;
+		&lt;div class=&quot;container&quot;&gt;
+			&lt;div class=&quot;row&quot;&gt;
+				&lt;h2&gt;&lt;i class=&quot;fa fa-play-circle&quot;&gt;&lt;/i&gt; Example&lt;/h2&gt;
+
+				&lt;p&gt;Type any message you want to show on the panel in the input box below, and press the button &quot;LEFT OPEN&quot;.&lt;/p&gt;
+
+				&lt;div class=&quot;form-group&quot;&gt;
+					&lt;input class=&quot;form-control input-lg&quot; type=&quot;text&quot; data-ng-model=&quot;message&quot; placeholder=&quot;Message for panels..&quot;&gt;
+				&lt;/div&gt;
+
+				&lt;div class=&quot;btn-group btn-group-justified&quot;&gt;
+					&lt;a href=&quot;&quot; data-ng-click=&quot;leftOpen()&quot; class=&quot;btn btn-default&quot;&gt;Left Open&lt;/a&gt;
+					&lt;a href=&quot;&quot; data-ng-click=&quot;rightOpen()&quot; class=&quot;btn btn-default&quot;&gt;Right Open&lt;/a&gt;
+					&lt;a href=&quot;&quot; data-ng-click=&quot;topOpen()&quot; class=&quot;btn btn-default&quot;&gt;Top Open&lt;/a&gt;
+					&lt;a href=&quot;&quot; data-ng-click=&quot;bottomOpen()&quot; class=&quot;btn btn-default&quot;&gt;Bottom Open&lt;/a&gt;
+				&lt;/div&gt;
+
+			&lt;/div&gt;
+		&lt;/div&gt;
+	&lt;/div&gt;
+
+	&lt;div
+		data-panels=&quot;true&quot;
+		data-panel-left-template=&quot;templates/left.html&quot;
+		data-panel-left-controller=&quot;leftCtrl&quot;
+		data-panel-right-template=&quot;templates/right.html&quot;
+		data-panel-right-controller=&quot;rightCtrl&quot;
+		data-panel-top-template=&quot;templates/top.html&quot;
+		data-panel-top-controller=&quot;topCtrl&quot;
+		data-panel-bottom-template=&quot;templates/bottom.html&quot;
+		data-panel-bottom-controller=&quot;bottomCtrl&quot;
+	&gt;&lt;/div&gt;
+
+	&lt;script&gt;
+
+		var app = angular.module('angularApplication', ['angular.panels']);
+
+		//default controller
+		app.controller('defaultController', ['$scope', 'panels', function ($scope, panels) {
+
+			$scope.leftOpen = function () {
+				$scope.$broadcast('leftHello', {message : $scope.message}); 
+			};
+
+			$scope.rightOpen = function () {
+				$scope.$broadcast('rightHello', {message : $scope.message}); 
+			};
+
+			$scope.topOpen = function () {
+				$scope.$broadcast('topHello', {message : $scope.message}); 
+			};
+
+			$scope.bottomOpen = function () {
+				$scope.$broadcast('bottomHello', {message : $scope.message}); 
+			};
+
+		}]);
+
+		//left panel controller
+		app.controller('leftCtrl', ['$scope', 'panels', function ($scope, panels) {
+
+			$scope.$on('leftHello', function(event, args) {
+
+				$scope.message = args.message;
+
+				panels.open(&quot;left&quot;);
+			});
+
+			$scope.closePane = function () {
+				panels.close();
+			};
+		}]);
+
+
+		//right panel controller
+		app.controller('rightCtrl', ['$scope', 'panels', function ($scope, panels) {
+
+			$scope.$on('rightHello', function(event, args) {
+
+				$scope.message = args.message;
+
+				panels.open(&quot;right&quot;);
+			});
+
+			$scope.closePane = function () {
+				panels.close();
+			};
+		}]);
+
+
+		//top panel controller
+		app.controller('topCtrl', ['$scope', 'panels', function ($scope, panels) {
+
+			$scope.$on('topHello', function(event, args) {
+
+				$scope.message = args.message;
+
+				panels.open(&quot;top&quot;);
+			});
+
+			$scope.closePane = function () {
+				panels.close();
+			};
+		}]);
+
+
+		//bottom panel controller
+		app.controller('bottomCtrl', ['$scope', 'panels', function ($scope, panels) {
+
+			$scope.$on('bottomHello', function(event, args) {
+
+				$scope.message = args.message;
+
+				panels.open(&quot;bottom&quot;);
+			});
+
+			$scope.closePane = function () {
+				panels.close();
+			};
+		}]);
+
+	&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
 			</div>
-		</nav>
+		</div>
 	</div>
 
-	<div class="container">
-		<div class="jumbotron">
-			<h1>angular.panels</h1>
-			<p>Pure AngularJS based Side Panels.</p>
-			<p><a href="https://github.com/eu81273/angular.panels" class="btn btn-primary btn-lg">GitHub</a></p>
-		</div>
 
-		<div class="form-group">
-			<label class="control-label" for="inputLarge">Message</label>
-			<input class="form-control input-lg" type="text" data-ng-model="message" placeholder="Message for panels..">
-		</div>
+	<div class="container-fluid content-section" id="compatibility" name="compatibility">
+		<div class="container">
+			<div class="row">
+				<h2><i class="fa fa-cog"></i> Compatibility</h2>
 
-		<div class="btn-group btn-group-justified">
-			<a href="" data-ng-click="leftOpen()" class="btn btn-default">Left Open</a>
-			<a href="" data-ng-click="rightOpen()" class="btn btn-default">Right Open</a>
-			<a href="" data-ng-click="topOpen()" class="btn btn-default">Top Open</a>
-			<a href="" data-ng-click="bottomOpen()" class="btn btn-default">Bottom Open</a>
+				<p>IE9+, Chrome, Safari.</p>
+			</div>
 		</div>
-
 	</div>
+
+
+	<div class="container-fluid content-section">
+		<div class="container">
+
+			<div class="row">
+				<div class="col-lg-4">
+					<div class="bs-component">
+						<h2>License</h2>
+						<p>The MIT License.</p>
+						<p class="text-info">Copyright ⓒ 2015 AHN JAE-HA.</p>
+					</div>
+				</div>
+				<div class="col-lg-4">
+					<div class="bs-component">
+						<h2>Fork on GitHub</h2>
+						<p>You can fork this on <a href="https://github.com/eu81273/angular.panels">GitHub</a>.</p>
+					</div>
+
+				</div>
+				<div class="col-lg-4">
+					<div class="bs-component">
+						<h2>Changelogs</h2>
+						<p class="text-muted">version 1.0.0</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
 
 	<div
 		data-panels="true"
