@@ -1,5 +1,5 @@
 /*
-	@license Angular Panels version 1.0.0
+	@license Angular Panels version 1.0.1
 	ⓒ 2015 AHN JAE-HA http://github.com/eu81273
 	License: MIT
 
