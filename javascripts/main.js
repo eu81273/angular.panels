@@ -2,6 +2,41 @@
 
 var app = angular.module('angularApplication', ['angular.panels']);
 
+//add panels
+app.config(['panelsProvider', function (panelsProvider) {
+
+    panelsProvider
+        .add({
+            id: 'test01',
+            position: 'left',
+            size: '700px',
+            templateUrl: '../resources/template/left.html',
+            controller: 'leftCtrl'
+        })
+        .add({
+            id: 'test02',
+            position: 'right',
+            size: '50%',
+            templateUrl: '../resources/template/right.html',
+            controller: 'rightCtrl'
+        })
+        .add({
+            id: 'test03',
+            position: 'top',
+            size: '20%',
+            templateUrl: '../resources/template/top.html',
+            controller: 'topCtrl'
+        })
+        .add({
+            id: 'test04',
+            position: 'bottom',
+            size: '80%',
+            templateUrl: '../resources/template/bottom.html',
+            controller: 'testpanelCtrl',
+            closeCallbackFunction: 'bottomClose'
+        });
+}]);
+
 //default controller
 app.controller('defaultController', ['$scope', 'panels', function ($scope, panels) {
 
@@ -30,12 +65,8 @@ app.controller('leftCtrl', ['$scope', 'panels', function ($scope, panels) {
 
 		$scope.message = args.message;
 
-		panels.open("left");
+		panels.open("test01");
 	});
-
-	$scope.closePane = function () {
-		panels.close();
-	};
 }]);
 
 
@@ -46,12 +77,8 @@ app.controller('rightCtrl', ['$scope', 'panels', function ($scope, panels) {
 
 		$scope.message = args.message;
 
-		panels.open("right");
+		panels.open("test02");
 	});
-
-	$scope.closePane = function () {
-		panels.close();
-	};
 }]);
 
 
@@ -62,12 +89,8 @@ app.controller('topCtrl', ['$scope', 'panels', function ($scope, panels) {
 
 		$scope.message = args.message;
 
-		panels.open("top");
+		panels.open("test03");
 	});
-
-	$scope.closePane = function () {
-		panels.close();
-	};
 }]);
 
 
@@ -78,10 +101,6 @@ app.controller('bottomCtrl', ['$scope', 'panels', function ($scope, panels) {
 
 		$scope.message = args.message;
 
-		panels.open("bottom");
+		panels.open("test04");
 	});
-
-	$scope.closePane = function () {
-		panels.close();
-	};
 }]);

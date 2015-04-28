@@ -24,11 +24,11 @@
 	<nav class="navbar navbar-default navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="" data-ng-click="leftOpen()"><i class="fa fa-bars"></i> Emotional Programming</a>
+				<a class="navbar-brand" href="" data-ng-click="menuOpen()"><i class="fa fa-bars"></i> Emotional Programming</a>
 			</div>
 
 			<ul class="nav navbar-nav navbar-right hidden-xs">
-				<li><a href="#quickstart"><i class="fa fa-bolt"></i> Quic start</a></li>
+				<li><a href="#quickstart"><i class="fa fa-bolt"></i>Quick start</a></li>
 				<li><a href="#example"><i class="fa fa-play-circle"></i> Example</a></li>
 				<li><a href="#compatibility"><i class="fa fa-cog"></i> Compatibility</a></li>
 			</ul>
@@ -56,47 +56,72 @@
 &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;angular.panels.css&quot;&gt;</code></pre>
 
 				<br/><br/>
-				<p>Add a dependency to your application module.</p>
-				<pre><code data-ng-non-bindable class="language-javascript">var app = angular.module('myApp', ['angular.panels']);</code></pre>
-
-				<br/><br/>
 				<p>And add panels container tag to your application.</p>
 				<pre><code data-ng-non-bindable class="language-markup">&lt;div
-    data-panels=&quot;true&quot;
-    data-panel-left-template=&quot;../resources/template/left.html&quot;
-    data-panel-left-controller=&quot;leftCtrl&quot; &gt;
-&lt;/div&gt;</code></pre>
+    data-panels=&quot;true&quot;&gt;&lt;/div&gt;</code></pre>
 
 				<br/><br/>
-				<p>additional attributes of angular panels are below.</p>
+				<p>Add a dependency to your application module and configure panel settings.</p>
+				<pre><code data-ng-non-bindable class="language-javascript">var app = angular.module('myApp', ['angular.panels']);
+
+app.config(['panelsProvider', function (panelsProvider) {
+
+    panelsProvider
+        .add({
+            id: 'testmenu',
+            position: 'right',
+            size: '700px',
+            templateUrl: '../resources/template/testmenu.html',
+            controller: 'testmenuCtrl'
+        })
+        .add({
+            id: 'testpanel',
+            position: 'right',
+            size: '80%',
+            templateUrl: '../resources/template/testpanel.html',
+            controller: 'testpanelCtrl',
+            closeCallbackFunction: 'testpanelClose'
+        });
+}]);</code></pre>
+
+
+
+				<br/><br/>
+				<p>each panel's attributes are..</p>
 				<dl class="">
-					<dt><label class="label label-default">panels</label></dt><dd>panels directive.</dd>
-					<dt><label class="label label-default">panel-left-template</label></dt><dd>template path of left side.</dd>
-					<dt><label class="label label-default">panel-left-controller</label></dt><dd>controller of left side.</dd>
-					<dt><label class="label label-default">panel-top-template</label></dt><dd>template path of top side.</dd>
-					<dt><label class="label label-default">panel-top-controller</label></dt><dd>controller of top side.</dd>
-					<dt><label class="label label-default">panel-right-template</label></dt><dd>template path of right side.</dd>
-					<dt><label class="label label-default">panel-right-controller</label></dt><dd>controller of right side.</dd>
-					<dt><label class="label label-default">panel-bottom-template</label></dt><dd>template path of bottom side.</dd>
-					<dt><label class="label label-default">panel-bottom-controller</label></dt><dd>controller of bottom side.</dd></p>
+					<dt><label class="label label-default">id</label></dt><dd>panel's unique id.</dd>
+					<dt><label class="label label-default">position</label></dt><dd>the side panel slides from top/right/bottom/left.</dd>
+					<dt><label class="label label-default">size</label></dt><dd>panel's height or width. unit(px,em,%..) is required.</dd>
+					<dt><label class="label label-default">templateUrl</label></dt><dd>panel template url.</dd>
+					<dt><label class="label label-default">controller</label></dt><dd>panel's controller name.</dd>
+					<dt><label class="label label-default">openCallbackFunction</label></dt><dd>panel open callback.</dd>
+					<dt><label class="label label-default">closeCallbackFunction</label></dt><dd>panel close callback.</dd>
 				</dl>
 
 				<br/><br/>
 				<p>To open the panel, inject panels service to your app then call the service method like below.</p>
-				<pre><code data-ng-non-bindable class="language-javascript">var app = angular.module('angularApplication', ['angular.panels']);
+				<pre><code data-ng-non-bindable class="language-javascript">var app = angular.module('myApp', ['angular.panels']);
+
+app.config(['panelsProvider', function (panelsProvider) {
+
+    panelsProvider
+        .add({
+            id: 'testmenu',
+            position: 'right',
+            size: '700px',
+            templateUrl: '../resources/template/testmenu.html',
+            controller: 'testmenuCtrl'
+        });
+}]);
 
 app.controller('defaultController', function($scope, panels) {
 
-    //open left panel
-    panels.open(&quot;left&quot;);
-
-    //close panel
-    //panels.close();
-
+    //open testmenu panel
+    panels.open('testmenu');
 });
 
 
-app.controller('leftCtrl', function($scope) {
+app.controller('testmenuCtrl', function($scope) {
 
     //left panel controller
 
@@ -182,6 +207,41 @@ app.controller('leftCtrl', function($scope) {
 
 		var app = angular.module('angularApplication', ['angular.panels']);
 
+		//add panels
+		app.config(['panelsProvider', function (panelsProvider) {
+
+		    panelsProvider
+		        .add({
+		            id: 'test01',
+		            position: 'left',
+		            size: '700px',
+		            templateUrl: '../resources/template/left.html',
+		            controller: 'leftCtrl'
+		        })
+		        .add({
+		            id: 'test02',
+		            position: 'right',
+		            size: '50%',
+		            templateUrl: '../resources/template/right.html',
+		            controller: 'rightCtrl'
+		        })
+		        .add({
+		            id: 'test03',
+		            position: 'top',
+		            size: '20%',
+		            templateUrl: '../resources/template/top.html',
+		            controller: 'topCtrl'
+		        })
+		        .add({
+		            id: 'test04',
+		            position: 'bottom',
+		            size: '80%',
+		            templateUrl: '../resources/template/bottom.html',
+		            controller: 'testpanelCtrl',
+		            closeCallbackFunction: 'bottomClose'
+		        });
+		}]);
+
 		//default controller
 		app.controller('defaultController', ['$scope', 'panels', function ($scope, panels) {
 
@@ -210,12 +270,8 @@ app.controller('leftCtrl', function($scope) {
 
 				$scope.message = args.message;
 
-				panels.open(&quot;left&quot;);
+				panels.open("test01");
 			});
-
-			$scope.closePane = function () {
-				panels.close();
-			};
 		}]);
 
 
@@ -226,12 +282,8 @@ app.controller('leftCtrl', function($scope) {
 
 				$scope.message = args.message;
 
-				panels.open(&quot;right&quot;);
+				panels.open("test02");
 			});
-
-			$scope.closePane = function () {
-				panels.close();
-			};
 		}]);
 
 
@@ -242,12 +294,8 @@ app.controller('leftCtrl', function($scope) {
 
 				$scope.message = args.message;
 
-				panels.open(&quot;top&quot;);
+				panels.open("test03");
 			});
-
-			$scope.closePane = function () {
-				panels.close();
-			};
 		}]);
 
 
@@ -258,12 +306,8 @@ app.controller('leftCtrl', function($scope) {
 
 				$scope.message = args.message;
 
-				panels.open(&quot;bottom&quot;);
+				panels.open("test04");
 			});
-
-			$scope.closePane = function () {
-				panels.close();
-			};
 		}]);
 
 	&lt;/script&gt;
@@ -274,7 +318,7 @@ app.controller('leftCtrl', function($scope) {
 				<br />
 				<p>left.html</p>
 				<pre><code data-ng-non-bindable class="language-markup">&lt;div class=&quot;pane-head&quot;&gt;
-	&lt;button type=&quot;button&quot; class=&quot;close&quot; data-ng-click=&quot;closePane();&quot;&gt;&times;&lt;/button&gt;
+	&lt;button type=&quot;button&quot; class=&quot;close&quot; data-ng-click=&quot;panels.close();&quot;&gt;&times;&lt;/button&gt;
 &lt;/div&gt;
 
 &lt;div class=&quot;pane-body&quot;&gt;
@@ -304,40 +348,24 @@ app.controller('leftCtrl', function($scope) {
 		<div class="container">
 
 			<div class="row">
-				<div class="col-lg-4">
+				<div class="col-lg-6">
 					<div class="bs-component">
 						<h2>License</h2>
 						<p>The MIT License.</p>
 						<p class="text-info">Copyright ⓒ 2015 AHN JAE-HA.</p>
 					</div>
 				</div>
-				<div class="col-lg-4">
+				<div class="col-lg-6">
 					<div class="bs-component">
 						<h2>Fork on GitHub</h2>
 						<p>You can fork this on <a href="https://github.com/eu81273/angular.panels">GitHub</a>.</p>
 					</div>
 
 				</div>
-				<div class="col-lg-4">
-					<div class="bs-component">
-						<h2>Changelogs</h2>
-						<p class="text-muted">version 1.0.0</p>
-				</div>
 			</div>
 		</div>
 	</section>
 
-
-	<div
-		data-panels="true"
-		data-panel-left-template="templates/left.html"
-		data-panel-left-controller="leftCtrl"
-		data-panel-right-template="templates/right.html"
-		data-panel-right-controller="rightCtrl"
-		data-panel-top-template="templates/top.html"
-		data-panel-top-controller="topCtrl"
-		data-panel-bottom-template="templates/bottom.html"
-		data-panel-bottom-controller="bottomCtrl"
-	></div>
+	<div data-panels="true"></div>
 </body>
 </html>
