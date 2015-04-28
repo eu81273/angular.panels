@@ -7,6 +7,13 @@ app.config(['panelsProvider', function (panelsProvider) {
 
     panelsProvider
         .add({
+            id: 'menu',
+            position: 'left',
+            size: '500px',
+            templateUrl: 'templates/menu.html',
+            controller: 'menuCtrl'
+        })
+        .add({
             id: 'test01',
             position: 'left',
             size: '700px',
@@ -40,6 +47,10 @@ app.config(['panelsProvider', function (panelsProvider) {
 //default controller
 app.controller('defaultController', ['$scope', 'panels', function ($scope, panels) {
 
+	$scope.menuOpen = function () {
+		$scope.$broadcast('menu'); 
+	};
+
 	$scope.leftOpen = function () {
 		$scope.$broadcast('leftHello', {message : $scope.message}); 
 	};
@@ -57,6 +68,15 @@ app.controller('defaultController', ['$scope', 'panels', function ($scope, panel
 	};
 
 }]);
+
+//menu panel controller
+app.controller('menuCtrl', ['$scope', 'panels', function ($scope, panels) {
+
+	$scope.$on('menuHello', function(event, args) {
+		panels.open("menu");
+	});
+}]);
+
 
 //left panel controller
 app.controller('leftCtrl', ['$scope', 'panels', function ($scope, panels) {
