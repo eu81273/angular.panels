@@ -1,5 +1,5 @@
 /*
-	@license Angular Panels version 1.0.1
+	@license Angular Panels version 1.0.3
 	ⓒ 2015 AHN JAE-HA http://github.com/eu81273
 	License: MIT
 
@@ -10,28 +10,95 @@
 
 	var module = angular.module( "angular.panels", [] );
 
+	module.constant("panelList", {});
+	module.provider("panels", ["panelList", function (panelList) {
 
-	//panels factory
-	module.factory('panels', function () {
-		var body = angular.element(document.body);
-		return {
-			position: undefined,
+		//add panels in config
+		this.add = function (panel) {
 
-			open: function (position) {
-				body.addClass('overflow-hidden');
-				this.position = position;
-			},
-
-			close: function () {
-				body.removeClass('overflow-hidden');
-				this.position = undefined;
+			//add panel
+			if (panel && panel.id) {
+				panelList[panel.id] = panel;
 			}
-		};
-	});
 
+			//for chaining
+			return this;
+		};
+
+		//factory
+		this.$get = ['$parse', function ($parse) {
+			//document body selector
+			var documentBody = angular.element(document.body);
+			
+			//panels factory
+			var panelsFactory = {
+				//current opened panel's id
+				opened: undefined,
+
+				//panel open method
+				open: function (id) {
+					//add body overflow hiden attribute
+					documentBody.addClass('overflow-hidden');
+					//close other panels
+					panelsFactory.opened && panelsFactory.close(panelsFactory.opened);
+
+					//check panel
+					if (id && panelList[id]) {
+						var panel = panelList[id];
+						var panelElement = panel.element;
+						var panelScope = panelElement.scope();
+						var openCallbackFunction = $parse(panel.openCallbackFunction)(panelScope);
+
+						//set panel style
+						panelElement.attr('style', panelsFactory.style(panel, true));
+						//if type of closeAction is function..
+						typeof openCallbackFunction == 'function' && openCallbackFunction();
+					}
+
+					//open panel
+					panelsFactory.opened = id;
+				},
+
+				//panel close method
+				close: function () {
+					//remove body overflow hiden attribute
+					documentBody.removeClass('overflow-hidden');
+					
+					//check opened panel
+					if (panelsFactory.opened && panelList[panelsFactory.opened]) {
+						var panel = panelList[panelsFactory.opened];
+						var panelElement = panel.element;
+						var panelScope = panelElement.scope();
+						var closeCallbackFunction = $parse(panel.closeCallbackFunction)(panelScope);
+
+						//remove panel style
+						panelElement.attr('style', panelsFactory.style(panel, false));
+						//if type of closeAction is function..
+						typeof closeCallbackFunction == 'function' && closeCallbackFunction();
+					}
+
+					//close panel
+					panelsFactory.opened = undefined;
+				},
+
+				//panel style
+				style: function (panel, open) {
+					switch (panel.position) {
+						case "top": case "bottom":
+							return panel.position + ":" + (open ? "0;" : "-" + panel.size + ";") + "height:" + panel.size + "";
+
+						case "left": case "right":
+							return panel.position + ":" + (open ? "0;" : "-" + panel.size + ";") + "width:" + panel.size + "";
+					}
+				}
+			};
+
+			return panelsFactory; 
+		}];
+	}]);
 
 	//panels directive
-	module.directive('panels', ['$http', '$compile', 'panels', function ($http, $compile, panels) {
+	module.directive('panels', ['$http', '$compile', 'panels', 'panelList', function ($http, $compile, panels, panelList) {
 
 		return {
 			//attribute
@@ -47,40 +114,25 @@
 
 			link: function ( scope, element, attrs ) {
 
-				//dim layer
-				element.append($compile('<div class="dim-layer" data-ng-class="{open : panels.position}" data-ng-click="panels.close();"></div>')(scope));
+				//add panel
+				angular.forEach(panelList, function(panel, key) {
 
-				//left panel
-				if(attrs.panelLeftTemplate && attrs.panelLeftController){
-					$http.get(attrs.panelLeftTemplate).success(function (panelContent) {
-						var template = '<div class="panels panel-left" data-ng-class="{open : panels.position==\'left\'}" data-ng-controller="' + attrs.panelLeftController + '">' + panelContent + '</div>';
-						element.append($compile(template)(scope));
-					});
-				}
+					//get template
+					$http.get(panel.templateUrl).success(function (template) {
 
-				//top panel
-				if(attrs.panelTopTemplate && attrs.panelTopController){
-					$http.get(attrs.panelTopTemplate).success(function (panelContent) {
-						var template = '<div class="panels panel-top" data-ng-class="{open : panels.position==\'top\'}" data-ng-controller="' + attrs.panelTopController + '">' + panelContent + '</div>';
-						element.append($compile(template)(scope));
+						//panel template
+						var template = '<div style="' + panels.style(panel) + '" class="panels panel-' + panel.position + '" data-ng-class="{open : panels.opened==\'' + panel.id + '\'}"  data-ng-controller="' + panel.controller + '">' + template + '</div>';
+						//compile template
+						var compiled = $compile(template)(scope);
+						//add compiled template
+						element.append(compiled);
+						//save selector
+						panelList[key].element = angular.element(compiled);
 					});
-				}
-
-				//right panel
-				if(attrs.panelRightTemplate && attrs.panelRightController){
-					$http.get(attrs.panelRightTemplate).success(function (panelContent) {
-						var template = '<div class="panels panel-right" data-ng-class="{open : panels.position==\'right\'}" data-ng-controller="' + attrs.panelRightController + '">' + panelContent + '</div>';
-						element.append($compile(template)(scope));
-					});
-				}
-
-				//bottom panel
-				if(attrs.panelBottomTemplate && attrs.panelBottomController){
-					$http.get(attrs.panelBottomTemplate).success(function (panelContent) {
-						var template = '<div class="panels panel-bottom" data-ng-class="{open : panels.position==\'bottom\'}" data-ng-controller="' + attrs.panelBottomController + '">' + panelContent + '</div>';
-						element.append($compile(template)(scope));
-					});
-				}
+				});
+				
+				//add dim
+				element.append($compile('<div class="dimming" data-ng-class="{open : panels.opened}" data-ng-click="panels.close();"></div>')(scope));
 			}
 		}
 	}]);

@@ -1,15 +1,15 @@
 /*
-	@license Angular Panels version 1.0.1
+	@license Angular Panels version 1.0.3
 	ⓒ 2015 AHN JAE-HA http://github.com/eu81273
 	License: MIT
 
 */
 
-.dim-layer {
+.dimming {
 	display:none;
 }
 
-.dim-layer.open {
+.dimming.open {
 	background:#000;
 	bottom:0;
 	display:block;
@@ -64,51 +64,7 @@
 }
 
 
-.panels.panel-bottom {
-	bottom:-500px;
-	height:500px;
-	width:100%;
-}
-
-.panels.panel-bottom.open {
-	-moz-box-shadow:0 -20px 80px 0 rgba(0,0,0,0.7);
-	-webkit-box-shadow:0 -20px 80px 0 rgba(0,0,0,0.7);
-	box-shadow:0 -20px 80px 0 rgba(0,0,0,0.7);
-	bottom:0;
-}
-
-
-.panels.panel-left {
-	height:100%;
-	left:-700px;
-	top:0;
-	width:700px;
-}
-
-.panels.panel-left.open {
-	-moz-box-shadow:20px 0 80px 0 rgba(0,0,0,0.7);
-	-webkit-box-shadow:20px 0 80px 0 rgba(0,0,0,0.7);
-	box-shadow:20px 0 80px 0 rgba(0,0,0,0.7);
-	left:0;
-}
-
-.panels.panel-right {
-	height:100%;
-	right:-700px;
-	top:0;
-	width:700px;
-}
-
-.panels.panel-right.open {
-	-moz-box-shadow:-20px 0 80px 0 rgba(0,0,0,0.7);
-	-webkit-box-shadow:-20px 0 80px 0 rgba(0,0,0,0.7);
-	box-shadow:-20px 0 80px 0 rgba(0,0,0,0.7);
-	right:0;
-}
-
-.panels.panel-top {
-	height:500px;
-	top:-500px;
+.panels.panel-top, .panels.panel-bottom {
 	width:100%;
 }
 
@@ -116,5 +72,29 @@
 	-moz-box-shadow:0 20px 80px 0 rgba(0,0,0,0.7);
 	-webkit-box-shadow:0 20px 80px 0 rgba(0,0,0,0.7);
 	box-shadow:0 20px 80px 0 rgba(0,0,0,0.7);
-	top:0;
+}
+
+.panels.panel-bottom.open {
+	-moz-box-shadow:0 -20px 80px 0 rgba(0,0,0,0.7);
+	-webkit-box-shadow:0 -20px 80px 0 rgba(0,0,0,0.7);
+	box-shadow:0 -20px 80px 0 rgba(0,0,0,0.7);
+}
+
+.panels.panel-left, .panels.panel-right {
+	height:100%;
+	top: 0;
+}
+
+
+.panels.panel-left.open {
+	-moz-box-shadow:20px 0 80px 0 rgba(0,0,0,0.7);
+	-webkit-box-shadow:20px 0 80px 0 rgba(0,0,0,0.7);
+	box-shadow:20px 0 80px 0 rgba(0,0,0,0.7);
+}
+
+
+.panels.panel-right.open {
+	-moz-box-shadow:-20px 0 80px 0 rgba(0,0,0,0.7);
+	-webkit-box-shadow:-20px 0 80px 0 rgba(0,0,0,0.7);
+	box-shadow:-20px 0 80px 0 rgba(0,0,0,0.7);
 }
