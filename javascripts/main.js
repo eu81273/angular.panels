@@ -72,7 +72,7 @@ app.controller('defaultController', ['$scope', 'panels', function ($scope, panel
 //menu panel controller
 app.controller('menuCtrl', ['$scope', 'panels', function ($scope, panels) {
 
-	$scope.$on('menuHello', function(event, args) {
+	$scope.$on('menu', function(event, args) {
 		panels.open("menu");
 	});
 }]);
