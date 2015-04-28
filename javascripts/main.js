@@ -32,7 +32,7 @@ app.config(['panelsProvider', function (panelsProvider) {
             position: 'bottom',
             size: '80%',
             templateUrl: 'templates/bottom.html',
-            controller: 'testpanelCtrl',
+            controller: 'bottomCtrl',
             closeCallbackFunction: 'bottomClose'
         });
 }]);
@@ -103,4 +103,10 @@ app.controller('bottomCtrl', ['$scope', 'panels', function ($scope, panels) {
 
 		panels.open("test04");
 	});
+
+	//close callback
+	$scop.bottomClose = function () {
+
+		window.alert('Close Callback!!');
+	};
 }]);
