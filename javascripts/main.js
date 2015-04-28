@@ -10,28 +10,28 @@ app.config(['panelsProvider', function (panelsProvider) {
             id: 'test01',
             position: 'left',
             size: '700px',
-            templateUrl: '../resources/template/left.html',
+            templateUrl: 'resources/template/left.html',
             controller: 'leftCtrl'
         })
         .add({
             id: 'test02',
             position: 'right',
             size: '50%',
-            templateUrl: '../resources/template/right.html',
+            templateUrl: 'resources/template/right.html',
             controller: 'rightCtrl'
         })
         .add({
             id: 'test03',
             position: 'top',
             size: '20%',
-            templateUrl: '../resources/template/top.html',
+            templateUrl: 'resources/template/top.html',
             controller: 'topCtrl'
         })
         .add({
             id: 'test04',
             position: 'bottom',
             size: '80%',
-            templateUrl: '../resources/template/bottom.html',
+            templateUrl: 'resources/template/bottom.html',
             controller: 'testpanelCtrl',
             closeCallbackFunction: 'bottomClose'
         });
