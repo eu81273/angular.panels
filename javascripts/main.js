@@ -105,7 +105,7 @@ app.controller('bottomCtrl', ['$scope', 'panels', function ($scope, panels) {
 	});
 
 	//close callback
-	$scop.bottomClose = function () {
+	$scope.bottomClose = function () {
 
 		window.alert('Close Callback!!');
 	};
