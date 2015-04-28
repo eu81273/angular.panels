@@ -65,8 +65,98 @@
 					<a href="" data-ng-click="topOpen()" class="btn btn-default">Top Open</a>
 					<a href="" data-ng-click="bottomOpen()" class="btn btn-default">Bottom Open</a>
 				</div>
+			</div>
+		</div>
+	</section>
 
-				<br /><br />
+
+	<section class="content-section container-fluid" id="quickstart">
+		<div class="container">
+			<div class="row">
+				<h2><i class="fa fa-bolt"></i> Quic start</h2>
+
+				<p>Copy the script and css into your project and add a script and link tag to your page.</p>
+				<pre><code data-ng-non-bindable class="language-markup">&lt;script type=&quot;text/javascript&quot; src=&quot;angular.panels.js&quot;&gt;&lt;/script&gt;
+&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;angular.panels.css&quot;&gt;</code></pre>
+
+				<br/><br/>
+				<p>And add panels container tag to your application.</p>
+				<pre><code data-ng-non-bindable class="language-markup">&lt;div
+    data-panels=&quot;true&quot;&gt;&lt;/div&gt;</code></pre>
+
+				<br/><br/>
+				<p>Add a dependency to your application module and configure panel settings.</p>
+				<pre><code data-ng-non-bindable class="language-javascript">var app = angular.module('myApp', ['angular.panels']);
+
+app.config(['panelsProvider', function (panelsProvider) {
+
+    panelsProvider
+        .add({
+            id: 'testmenu',
+            position: 'right',
+            size: '700px',
+            templateUrl: '../resources/template/testmenu.html',
+            controller: 'testmenuCtrl'
+        })
+        .add({
+            id: 'testpanel',
+            position: 'right',
+            size: '80%',
+            templateUrl: '../resources/template/testpanel.html',
+            controller: 'testpanelCtrl',
+            closeCallbackFunction: 'testpanelClose'
+        });
+}]);</code></pre>
+
+
+
+				<br/><br/>
+				<p>each panel's attributes are..</p>
+				<dl class="">
+					<dt><label class="label label-default">id</label></dt><dd>panel's unique id.</dd>
+					<dt><label class="label label-default">position</label></dt><dd>the side panel slides from top/right/bottom/left.</dd>
+					<dt><label class="label label-default">size</label></dt><dd>panel's height or width. unit(px,em,%..) is required.</dd>
+					<dt><label class="label label-default">templateUrl</label></dt><dd>panel template url.</dd>
+					<dt><label class="label label-default">controller</label></dt><dd>panel's controller name.</dd>
+					<dt><label class="label label-default">openCallbackFunction</label></dt><dd>panel open callback.</dd>
+					<dt><label class="label label-default">closeCallbackFunction</label></dt><dd>panel close callback.</dd>
+				</dl>
+
+				<br/><br/>
+				<p>To open the panel, inject panels service to your app then call the service method like below.</p>
+				<pre><code data-ng-non-bindable class="language-javascript">var app = angular.module('myApp', ['angular.panels']);
+
+app.config(['panelsProvider', function (panelsProvider) {
+
+    panelsProvider
+        .add({
+            id: 'testmenu',
+            position: 'right',
+            size: '700px',
+            templateUrl: '../resources/template/testmenu.html',
+            controller: 'testmenuCtrl'
+        });
+}]);
+
+app.controller('defaultController', function($scope, panels) {
+
+    //open testmenu panel
+    panels.open('testmenu');
+});
+
+
+app.controller('testmenuCtrl', function($scope) {
+
+    //left panel controller
+
+});</code></pre>
+
+				<br/><br/>
+				<p>It's <strong>all</strong>. Full source of the demo is below.</p>
+
+
+
+				<br /><br /><br /><br />
 				<p>index.html</p>
 				<pre><code data-ng-non-bindable class="language-markup">&lt;!DOCTYPE html&gt;
 
@@ -229,95 +319,6 @@
 	&lt;/div&gt;
 	&lt;div class=&quot;row&quot;&gt;{{message}}&lt;/div&gt;
 &lt;/div&gt;</code></pre>
-
-			</div>
-		</div>
-	</section>
-
-
-	<section class="content-section container-fluid" id="quickstart">
-		<div class="container">
-			<div class="row">
-				<h2><i class="fa fa-bolt"></i> Quic start</h2>
-
-				<p>Copy the script and css into your project and add a script and link tag to your page.</p>
-				<pre><code data-ng-non-bindable class="language-markup">&lt;script type=&quot;text/javascript&quot; src=&quot;angular.panels.js&quot;&gt;&lt;/script&gt;
-&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;angular.panels.css&quot;&gt;</code></pre>
-
-				<br/><br/>
-				<p>And add panels container tag to your application.</p>
-				<pre><code data-ng-non-bindable class="language-markup">&lt;div
-    data-panels=&quot;true&quot;&gt;&lt;/div&gt;</code></pre>
-
-				<br/><br/>
-				<p>Add a dependency to your application module and configure panel settings.</p>
-				<pre><code data-ng-non-bindable class="language-javascript">var app = angular.module('myApp', ['angular.panels']);
-
-app.config(['panelsProvider', function (panelsProvider) {
-
-    panelsProvider
-        .add({
-            id: 'testmenu',
-            position: 'right',
-            size: '700px',
-            templateUrl: '../resources/template/testmenu.html',
-            controller: 'testmenuCtrl'
-        })
-        .add({
-            id: 'testpanel',
-            position: 'right',
-            size: '80%',
-            templateUrl: '../resources/template/testpanel.html',
-            controller: 'testpanelCtrl',
-            closeCallbackFunction: 'testpanelClose'
-        });
-}]);</code></pre>
-
-
-
-				<br/><br/>
-				<p>each panel's attributes are..</p>
-				<dl class="">
-					<dt><label class="label label-default">id</label></dt><dd>panel's unique id.</dd>
-					<dt><label class="label label-default">position</label></dt><dd>the side panel slides from top/right/bottom/left.</dd>
-					<dt><label class="label label-default">size</label></dt><dd>panel's height or width. unit(px,em,%..) is required.</dd>
-					<dt><label class="label label-default">templateUrl</label></dt><dd>panel template url.</dd>
-					<dt><label class="label label-default">controller</label></dt><dd>panel's controller name.</dd>
-					<dt><label class="label label-default">openCallbackFunction</label></dt><dd>panel open callback.</dd>
-					<dt><label class="label label-default">closeCallbackFunction</label></dt><dd>panel close callback.</dd>
-				</dl>
-
-				<br/><br/>
-				<p>To open the panel, inject panels service to your app then call the service method like below.</p>
-				<pre><code data-ng-non-bindable class="language-javascript">var app = angular.module('myApp', ['angular.panels']);
-
-app.config(['panelsProvider', function (panelsProvider) {
-
-    panelsProvider
-        .add({
-            id: 'testmenu',
-            position: 'right',
-            size: '700px',
-            templateUrl: '../resources/template/testmenu.html',
-            controller: 'testmenuCtrl'
-        });
-}]);
-
-app.controller('defaultController', function($scope, panels) {
-
-    //open testmenu panel
-    panels.open('testmenu');
-});
-
-
-app.controller('testmenuCtrl', function($scope) {
-
-    //left panel controller
-
-});</code></pre>
-
-				<br/><br/>
-				<p>It's <strong>all</strong>.</p>
 
 			</div>
 		</div>
