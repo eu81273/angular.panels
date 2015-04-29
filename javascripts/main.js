@@ -5,43 +5,43 @@ var app = angular.module('angularApplication', ['angular.panels']);
 //add panels
 app.config(['panelsProvider', function (panelsProvider) {
 
-    panelsProvider
-        .add({
-            id: 'menu',
-            position: 'left',
-            size: '500px',
-            templateUrl: 'templates/menu.html',
-            controller: 'menuCtrl'
-        })
-        .add({
-            id: 'test01',
-            position: 'left',
-            size: '700px',
-            templateUrl: 'templates/left.html',
-            controller: 'leftCtrl'
-        })
-        .add({
-            id: 'test02',
-            position: 'right',
-            size: '50%',
-            templateUrl: 'templates/right.html',
-            controller: 'rightCtrl'
-        })
-        .add({
-            id: 'test03',
-            position: 'top',
-            size: '20%',
-            templateUrl: 'templates/top.html',
-            controller: 'topCtrl'
-        })
-        .add({
-            id: 'test04',
-            position: 'bottom',
-            size: '80%',
-            templateUrl: 'templates/bottom.html',
-            controller: 'bottomCtrl',
-            closeCallbackFunction: 'bottomClose'
-        });
+	panelsProvider
+		.add({
+			id: 'menu',
+			position: 'left',
+			size: '500px',
+			templateUrl: 'templates/menu.html',
+			controller: 'menuCtrl'
+		})
+		.add({
+			id: 'test01',
+			position: 'left',
+			size: '700px',
+			templateUrl: 'templates/left.html',
+			controller: 'leftCtrl'
+		})
+		.add({
+			id: 'test02',
+			position: 'right',
+			size: '50%',
+			templateUrl: 'templates/right.html',
+			controller: 'rightCtrl'
+		})
+		.add({
+			id: 'test03',
+			position: 'top',
+			size: '20%',
+			templateUrl: 'templates/top.html',
+			controller: 'topCtrl'
+		})
+		.add({
+			id: 'test04',
+			position: 'bottom',
+			size: '80%',
+			templateUrl: 'templates/bottom.html',
+			controller: 'bottomCtrl',
+			closeCallbackFunction: 'bottomClose'
+		});
 }]);
 
 //default controller

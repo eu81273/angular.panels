@@ -300,6 +300,12 @@ app.controller('testmenuCtrl', function($scope) {
 
 				panels.open("test04");
 			});
+
+			//close callback
+			$scope.bottomClose = function () {
+
+				window.alert('Close Callback!!');
+			};
 		}]);
 
 	&lt;/script&gt;
