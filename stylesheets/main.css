@@ -20,7 +20,7 @@
 @media screen and ( max-width: 768px ){
 
 	.title-section {
-		padding: 260px 0 200px 0;
+		padding: 160px 0 100px 0;
 		background-color: #28affa;
 	}
 
@@ -48,7 +48,7 @@
 /* 큰 화면 */
 @media screen and ( min-width: 768px ){
 	.title-section {
-		padding: 160px 0 100px 0;
+		padding: 260px 0 200px 0;
 		background-color: #28affa;
 	}
 
