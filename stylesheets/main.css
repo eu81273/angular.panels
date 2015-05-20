@@ -21,7 +21,15 @@
 
 	.title-section {
 		padding: 160px 0 100px 0;
-		background-color: #28affa;
+		background: rgb(4,178,155); /* Old browsers */
+		background: -moz-linear-gradient(left,  rgb(4,178,155) 0%, rgb(161,219,255) 100%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgb(4,178,155)), color-stop(100%,rgb(161,219,255))); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(left,  rgb(4,178,155) 0%,rgb(161,219,255) 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(left,  rgb(4,178,155) 0%,rgb(161,219,255) 100%); /* Opera 11.10+ */
+		background: -ms-linear-gradient(left,  rgb(4,178,155) 0%,rgb(161,219,255) 100%); /* IE10+ */
+		background: linear-gradient(to right,  rgb(4,178,155) 0%,rgb(161,219,255) 100%); /* W3C */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#04b29b', endColorstr='#a1dbff',GradientType=1 ); /* IE6-9 */
+
 	}
 
 		.title-section h1 {
@@ -48,8 +56,15 @@
 /* 큰 화면 */
 @media screen and ( min-width: 768px ){
 	.title-section {
-		padding: 260px 0 200px 0;
-		background-color: #28affa;
+		padding: 310px 0 290px 0;
+		background: rgb(4,178,155); /* Old browsers */
+		background: -moz-linear-gradient(left,  rgb(4,178,155) 0%, rgb(161,219,255) 100%); /* FF3.6+ */
+		background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgb(4,178,155)), color-stop(100%,rgb(161,219,255))); /* Chrome,Safari4+ */
+		background: -webkit-linear-gradient(left,  rgb(4,178,155) 0%,rgb(161,219,255) 100%); /* Chrome10+,Safari5.1+ */
+		background: -o-linear-gradient(left,  rgb(4,178,155) 0%,rgb(161,219,255) 100%); /* Opera 11.10+ */
+		background: -ms-linear-gradient(left,  rgb(4,178,155) 0%,rgb(161,219,255) 100%); /* IE10+ */
+		background: linear-gradient(to right,  rgb(4,178,155) 0%,rgb(161,219,255) 100%); /* W3C */
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#04b29b', endColorstr='#a1dbff',GradientType=1 ); /* IE6-9 */
 	}
 
 		.title-section h1 {
