@@ -4,7 +4,7 @@
 <head lang="ko">
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
-	
+
 	<link href="//cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.2/sandstone/bootstrap.min.css" rel="stylesheet" type="text/css">
 	<link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 	<link href="//rawgit.com/eu81273/angular.panels/master/dist/angular.panels.min.css" rel="stylesheet" type="text/css">
@@ -41,6 +41,7 @@
 				<div class="col-sm-12 col-xs-12 text-center">
 					<h1>angular.panels</h1>
 					<p>Pure AngularJS based Side Panels.</p>
+					<p><a href="https://github.com/eu81273/angular.panels"><button class="btn btn-transparent"><i class="fa fa-github"></i> Fork on GitHub</button></a></p>
 				</div>
 			</div>
 		</div>
@@ -237,19 +238,19 @@ app.controller('testmenuCtrl', function($scope) {
 		app.controller('defaultController', ['$scope', 'panels', function ($scope, panels) {
 
 			$scope.leftOpen = function () {
-				$scope.$broadcast('leftHello', {message : $scope.message}); 
+				$scope.$broadcast('leftHello', {message : $scope.message});
 			};
 
 			$scope.rightOpen = function () {
-				$scope.$broadcast('rightHello', {message : $scope.message}); 
+				$scope.$broadcast('rightHello', {message : $scope.message});
 			};
 
 			$scope.topOpen = function () {
-				$scope.$broadcast('topHello', {message : $scope.message}); 
+				$scope.$broadcast('topHello', {message : $scope.message});
 			};
 
 			$scope.bottomOpen = function () {
-				$scope.$broadcast('bottomHello', {message : $scope.message}); 
+				$scope.$broadcast('bottomHello', {message : $scope.message});
 			};
 
 		}]);

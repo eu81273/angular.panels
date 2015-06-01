@@ -3,7 +3,7 @@
 	font-style: normal;
 	font-weight: 400;
 	src: url(//fonts.gstatic.com/ea/hanna/v3/BM-HANNA.eot);
-	src: 
+	src:
 		url(//fonts.gstatic.com/ea/hanna/v3/BM-HANNA.eot?#iefix) format('embedded-opentype'),
 		url(//fonts.gstatic.com/ea/hanna/v3/BM-HANNA.woff2) format('woff2'),
 		url(//fonts.gstatic.com/ea/hanna/v3/BM-HANNA.woff) format('woff'),
@@ -16,71 +16,64 @@
 	z-index: 50;
 }
 
-/* 작은 화면 */
-@media screen and ( max-width: 768px ){
 
-	.title-section {
-		padding: 160px 0 100px 0;
-		background: #2095D1;
-		background-image: -webkit-linear-gradient(45deg, #2095D1, #FF8AD6);
-		background-image: -moz-linear-gradient(45deg, #2095D1, #FF8AD6);
-		background-image: -ms-linear-gradient(45deg, #2095D1, #FF8AD6);
-		background-image: -o-linear-gradient(45deg, #2095D1, #FF8AD6);
-		background: linear-gradient(45deg, #2095D1, #FF8AD6);
+
+.title-section {
+	padding: 280px 0 290px 0;
+	background: #2095D1;
+	background-image: -webkit-linear-gradient(45deg, #2095D1, #FF8AD6);
+	background-image: -moz-linear-gradient(45deg, #2095D1, #FF8AD6);
+	background-image: -ms-linear-gradient(45deg, #2095D1, #FF8AD6);
+	background-image: -o-linear-gradient(45deg, #2095D1, #FF8AD6);
+	background: linear-gradient(45deg, #2095D1, #FF8AD6);
+}
+	/* 작은 화면 */
+	@media screen and ( max-width: 768px ){
+		.title-section {
+			padding: 160px 0 100px 0;
+		}
 	}
 
+	.title-section h1 {
+		font-size: 100px;
+		color: #FFF;
+	}
+
+	/* 작은 화면 */
+	@media screen and ( max-width: 768px ){
 		.title-section h1 {
 			font-size: 50px;
-			color: #FFF;
 		}
-
-		.title-section p {
-			font-size: 20px;
-			color: #EEE;
-		}
-
-	.content-section {
-		padding: 70px 20px;
-		font-size: 1.3em;
 	}
 
-	.content-section pre code, .content-section pre code span, .content-section pre code span a {
-		font-size: 14px;
-		font-family: Consolas, Monaco, 'Andale Mono', monospace;
+	.title-section p {
+		font-size: 20px;
+		color: #EEE;
 	}
+
+
+	.title-section a .btn.btn-transparent {
+		color: #FFF;
+		margin-top: 50px;
+		background-color: transparent;
+		border: 2px solid white;
+		transition: all .3s ease 0s;
+	}
+		.title-section a .btn.btn-transparent:hover {
+			color: #454545;
+			border: 2px solid #454545;
+		}
+
+
+
+.content-section {
+	padding: 70px 20px;
+	font-size: 1.3em;
 }
 
-/* 큰 화면 */
-@media screen and ( min-width: 768px ){
-	.title-section {
-		padding: 310px 0 290px 0;
-		background: #2095D1;
-		background-image: -webkit-linear-gradient(45deg, #2095D1, #FF8AD6);
-		background-image: -moz-linear-gradient(45deg, #2095D1, #FF8AD6);
-		background-image: -ms-linear-gradient(45deg, #2095D1, #FF8AD6);
-		background-image: -o-linear-gradient(45deg, #2095D1, #FF8AD6);
-		background: linear-gradient(45deg, #2095D1, #FF8AD6);
-	}
-
-		.title-section h1 {
-			font-size: 100px;
-			color: #FFF;
-		}
-
-		.title-section p {
-			font-size: 20px;
-			color: #EEE;
-		}
-
-	.content-section {
-		padding: 70px 20px;
-		font-size: 1.3em;
-	}
-
-	.content-section pre code, .content-section pre code span, .content-section pre code span a {
-		font-size: 14px;
-		font-family: Consolas, Monaco, 'Andale Mono', monospace;
-	}
+.content-section pre code, .content-section pre code span, .content-section pre code span a {
+	font-size: 14px;
+	font-family: Consolas, Monaco, 'Andale Mono', monospace;
 }
 
 
