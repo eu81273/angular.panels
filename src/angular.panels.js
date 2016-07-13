@@ -18,7 +18,11 @@
 
 			//add panel
 			if (panel && panel.id) {
+				if(!panel.hasOwnProperty('dim')){
+					panel.dim = true;
+				}
 				panelList[panel.id] = panel;
+
 			}
 
 			//for chaining
@@ -53,10 +57,13 @@
 						panelElement.attr('style', panelsFactory.style(panel, true));
 						//if type of closeAction is function..
 						typeof openCallbackFunction == 'function' && openCallbackFunction();
+
+						panelsFactory.dim = panel.dim;
 					}
 
 					//open panel
 					panelsFactory.opened = id;
+
 				},
 
 				//panel close method
@@ -79,6 +86,7 @@
 
 					//close panel
 					panelsFactory.opened = undefined;
+					panelsFactory.dim = undefined;
 				},
 
 				//panel style
@@ -132,9 +140,9 @@
 				});
 				
 				//add dim
-				element.append($compile('<div class="dimming" data-ng-class="{open : panels.opened}" data-ng-click="panels.close();"></div>')(scope));
+				element.append($compile('<div class="dimming" data-ng-class="{open : panels.dim}" data-ng-click="panels.close();"></div>')(scope));
 			}
-		}
+		};
 	}]);
 
 })(angular);
