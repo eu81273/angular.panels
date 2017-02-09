@@ -118,7 +118,7 @@
 				angular.forEach(panelList, function(panel, key) {
 
 					//get template
-					$http.get(panel.templateUrl, {cache: $templateCache}).success(function (template) {
+					$http.get(panel.templateUrl, {cache: $templateCache}).then(function (template) {
 
 						//panel template
 						var template = '<div style="' + panels.style(panel) + '" class="panels panel-' + panel.position + '" data-ng-class="{open : panels.opened==\'' + panel.id + '\'}"  data-ng-controller="' + panel.controller + '">' + template + '</div>';
